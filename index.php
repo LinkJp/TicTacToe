@@ -1,12 +1,12 @@
 <?php
 
-require_once("./player.php");
-require_once("./FieldLayout.php");
+require_once("./Player.php");
+require_once("./Board.php");
 
 $player1 = new Player("Paul", "X");
 $player2 = new Player("Peter", "O");
 
-$board = new FieldLayout(array(array("","",""),array("","",""),array("","","")));
+$board = new Board(array(array("","",""),array("","",""),array("","","")));
 
 class TicTacToe{
     private $currentPlayer;
@@ -80,17 +80,17 @@ table.tic td {
                     <tr>';
 
 $table = '
-                        <td><input type="submit" class="reset field" name="cell-0-0" value="X" /></td>
+                        <td><input type="submit" class="reset field" name="cell-0-0" value="D" /></td>
                         <td><input type="submit" class="reset field" name="cell-0-1" value="X" /></td>
                         <td><input type="submit" class="reset field" name="cell-0-2" value="X" /></td>
                     </tr>
                     <tr>
-                        <td><input type="submit" class="reset field" name="cell-1-0" value="X" /></td>
+                        <td><input type="submit" class="reset field" name="cell-1-0" value="Y" /></td>
                         <td><input type="submit" class="reset field" name="cell-1-1" value="X" /></td>
                         <td><input type="submit" class="reset field" name="cell-1-2" value="X" /></td>
                     </tr>
                     <tr>
-                        <td><input type="submit" class="reset field" name="cell-2-0" value="X" /></td>
+                        <td><input type="submit" class="reset field" name="cell-2-0" value="C" /></td>
                         <td><input type="submit" class="reset field" name="cell-2-1" value="X" /></td>
                         <td><input type="submit" class="reset field" name="cell-2-2" value="X" /></td>';
 
@@ -103,7 +103,7 @@ $end = '
 </body>
 </html>';
 
-
+/*
 for ($i=0;$i<3;$i++){
     $currentP = Z;
     $startPut = "<tr>";
@@ -111,27 +111,25 @@ for ($i=0;$i<3;$i++){
         $startPut .= "<td><input type='submit' class='reset field' name='cell-'".$i."'-'".$z."value=".$currentP."></td>;
     }
 
-    </tr>
+    $startPut .='</tr>';
 
 }
+print_r($startPut);
+*/
 
-
-
+for($i = 0; $i < 3; $i++){
+    $field = '<tr>';
+    for($x = 0; $x < 3; $x++){
+        $field .= "<td><input type=\"submit\" class=\"reset field\" name=\"cell-\"$i\"-\"$x\" value=\"$currentPlayer\"</td>";
+    }
+    $field .= '</tr>';
+}
+print_r ($field);
+/*
 $all;
 $all .= $output;
 $all .= $table;
 $all .= $end;
-
-
-for ($i=0;$i<3;$i++) {
-    for ($z = 0; $z < 3; $z++) {
-        if (isset($_GET["cell-".$i."-".$z.""])) {
-            $board->placeSymbol($_GET["cell-".$i."-".$z.""], "cell-".$i."-".$z."");
-            print_r("cell-".$i."-".$z."");
-        }
-    }
-}
-
-
-
+echo $all;
+*/
 ?>
