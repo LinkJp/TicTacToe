@@ -61,19 +61,19 @@ table.tic td {
                 <form method="get" action="index.php">
                     <table class="tic">
                     <tr>
-                        <td><input type="submit" class="reset table" name="cell-0-0" value""</td>
-                        <td><input type="submit" class="reset table" name="cell-0-1" value""</td>
-                        <td><input type="submit" class="reset table" name="cell-0-2" value""</td>
+                        <td><input type="submit" class="reset table" name="cell-0-0" value""></td>
+                        <td><input type="submit" class="reset table" name="cell-0-1" value""></td>
+                        <td><input type="submit" class="reset table" name="cell-0-2" value""></td>
                     </tr>
                     <tr>
-                        <td><input type="submit" class="reset table" name="cell-1-0" value""</td>
-                        <td><input type="submit" class="reset table" name="cell-1-1" value""</td>
-                        <td><input type="submit" class="reset table" name="cell-1-2" value""</td>
+                        <td><input type="submit" class="reset table" name="cell-1-0" value""></td>
+                        <td><input type="submit" class="reset table" name="cell-1-1" value""></td>
+                        <td><input type="submit" class="reset table" name="cell-1-2" value""></td>
                     </tr>
                     <tr>
-                        <td><input type="submit" class="reset table" name="cell-2-0" value""</td>
-                        <td><input type="submit" class="reset table" name="cell-2-1" value""</td>
-                        <td><input type="submit" class="reset table" name="cell-2-2" value""</td>
+                        <td><input type="submit" class="reset table" name="cell-2-0" value""></td>
+                        <td><input type="submit" class="reset table" name="cell-2-1" value""></td>
+                        <td><input type="submit" class="reset table" name="cell-2-2" value""></td>
                     </tr>
                     </table>';
                 </form>
