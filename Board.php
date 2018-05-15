@@ -2,13 +2,16 @@
 
 class Board{
 
-    private $board;
-
-    public function __construct($array){
-        $this->board = $array(array("","",""),array("","",""),array("","",""));
+    public function __construct(){
+        $this->board = [
+            ["","",""],
+            ["","",""],
+            ["","",""]
+        ];  
     }
 
     public function placeSymbol($symbol,$position){
+        $position = $_GET["cell-".$i."-".$x];
         switch ($position) {
             case "cell-0-0":
                 $this->board[0][0] = $symbol;
@@ -38,24 +41,31 @@ class Board{
                 $this->board[2][2] = $symbol;
                 break;
         }
-    }
-
-    public function getBoard(){
         return $this->board;
     }
-}
 
-$currentPlayer;
-$table = "<table>";
-for($i = 0; $i < 3; $i++){
-   
-    $table .= "<tr>";
-   
-    for($x = 0; $x < 3; $x++){
-        $table .= "<td><input type=\"submit\" class=\"reset table\" name=\"cell-$i-$x\" value= \"$currentPlayer\"</td>";
+
+    public function getBoard(){
+        return $this->$board;
     }
+
+    private $table;
     
-    $table .= "</tr>";    
+    public function makeMove(){ 
+
+        if(isset($_GET["cell-".$i."-".$x])){
+            for ($i=0;$i<3;$i++){
+                $currentP = Z;
+                $table = "<tr>";
+                for ($z=0;$z<3;$z++){
+                    $table .= '<td><input type=\"submit\" class=\"reset field\" name=\"cell-\"$i\"-\"$z\"value=\"$currentP\"></td>';
+                }
+
+                $table .='</tr>';
+
+            }
+        }
+        return $table;
+    }
+
 }
-$table .= "</table>";
-print_r ($table);

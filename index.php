@@ -1,43 +1,15 @@
 <?php
-
+SESSION_START();
 require_once("./Player.php");
 require_once("./Board.php");
-
-$player1 = new Player("Paul", "X");
-$player2 = new Player("Peter", "O");
-
-$board = new Board(array(array("","",""),array("","",""),array("","","")));
-
-class TicTacToe{
-    private $currentPlayer;
-
-    public function __construct($Player){
-        $this->currentPlayer = $Player;
-    }
-
-    private function switchPlayer(){
-        //
-
-    }
-
-    public function move($player,$position){
-
-        //Hier eine Funktion um die HTML zu "rendern"
-
-    }
-
-    public function currentStatus(){
-        return $this->currentPlayer;
-    }
-}
-
-
-
-$output = '<!DOCTYPE html>
+require_once("./TicTacToe.php");
+?>
+<!DOCTYPE html>
 <head>
     <meta charset="utf-8">
     <title>Tic-Tac-Toe. This is the title. It is displayed in the titlebar of the window in most browsers.</title>
     <meta name="description" content="Tic-Tac-Toe-Game. Here is a short description for the page. This text is displayed e. g. in search engine result listings.">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <style>
 table.tic td {
     border: 1px solid #333; /* grey cell borders */
@@ -49,7 +21,7 @@ table.tic td {
             font-family: Arial;
         }
         table { margin-bottom: 2rem; }
-        input.field {
+        input.table {
     border: 0;
     background-color: white;
             color: white; /* make the value invisible (white) */
@@ -60,7 +32,7 @@ table.tic td {
             font-weight: normal;
             cursor: pointer;
         }
-        input.field:hover {
+        input.table:hover {
     border: 0;
     color: #c81657; /* red on hover */
 }
@@ -74,62 +46,39 @@ table.tic td {
         <h1>Tic-Tac-Toe</h1>
         <article id="mainContent">
             <h2>Your free browsergame!</h2>
-            <p>Type your game instructions here...</p>
-            <form method="get" action="index.php">
-                <table class="tic">
-                    <tr>';
-
-$table = '
-                        <td><input type="submit" class="reset field" name="cell-0-0" value="D" /></td>
-                        <td><input type="submit" class="reset field" name="cell-0-1" value="X" /></td>
-                        <td><input type="submit" class="reset field" name="cell-0-2" value="X" /></td>
+<!--            <p>Type in your names, the first player will get the X Symbol, the second one gets the O</p>';
+            <div class="form-group col-lg-1">
+                <form method="get" action="index.php">
+                    <div class="form-group col-lg-2">
+                        <label for="PlayerOne">PlayerOne</label>
+                        <input type="text" name="PlayerOne" class="form-control">
+                        <label for="PlayerTwo">PlayerTwo</label>
+                        <input type="text" name="PlayerTwo" class="form-control">
+                        <input type="button" class="btn btn-primary" name="playersubmit" value="playersubmit">
+                    </div>
+                </form>
+            </div>'; -->
+                <form method="get" action="index.php">
+                    <table class="tic">
+                    <tr>
+                        <td><input type="submit" class="reset table" name="cell-0-0" value""</td>
+                        <td><input type="submit" class="reset table" name="cell-0-1" value""</td>
+                        <td><input type="submit" class="reset table" name="cell-0-2" value""</td>
                     </tr>
                     <tr>
-                        <td><input type="submit" class="reset field" name="cell-1-0" value="Y" /></td>
-                        <td><input type="submit" class="reset field" name="cell-1-1" value="X" /></td>
-                        <td><input type="submit" class="reset field" name="cell-1-2" value="X" /></td>
+                        <td><input type="submit" class="reset table" name="cell-1-0" value""</td>
+                        <td><input type="submit" class="reset table" name="cell-1-1" value""</td>
+                        <td><input type="submit" class="reset table" name="cell-1-2" value""</td>
                     </tr>
                     <tr>
-                        <td><input type="submit" class="reset field" name="cell-2-0" value="C" /></td>
-                        <td><input type="submit" class="reset field" name="cell-2-1" value="X" /></td>
-                        <td><input type="submit" class="reset field" name="cell-2-2" value="X" /></td>';
-
-$end = '
+                        <td><input type="submit" class="reset table" name="cell-2-0" value""</td>
+                        <td><input type="submit" class="reset table" name="cell-2-1" value""</td>
+                        <td><input type="submit" class="reset table" name="cell-2-2" value""</td>
                     </tr>
-                </table>
-            </form>
+                    </table>';
+                </form>
         </article>
     </section>
 </body>
 </html>';
 
-/*
-for ($i=0;$i<3;$i++){
-    $currentP = Z;
-    $startPut = "<tr>";
-    for ($z=0;$z<3;$z++){
-        $startPut .= "<td><input type='submit' class='reset field' name='cell-'".$i."'-'".$z."value=".$currentP."></td>;
-    }
-
-    $startPut .='</tr>';
-
-}
-print_r($startPut);
-*/
-
-for($i = 0; $i < 3; $i++){
-    $field = '<tr>';
-    for($x = 0; $x < 3; $x++){
-        $field .= "<td><input type=\"submit\" class=\"reset field\" name=\"cell-\"$i\"-\"$x\" value=\"$currentPlayer\"</td>";
-    }
-    $field .= '</tr>';
-}
-print_r ($field);
-/*
-$all;
-$all .= $output;
-$all .= $table;
-$all .= $end;
-echo $all;
-*/
-?>
