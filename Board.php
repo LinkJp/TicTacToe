@@ -2,51 +2,34 @@
 
 class Board{
 
-    public function __construct(){
+    /**
+     * @var Board $board creates multidimensional array with strings as values
+     */
+    private $board;
+
+    /**
+     * @param Board contains $board 
+     * @method constructs new Board object
+     */
+    public function __construct($board){
         $this->board = [
             ["","",""],
             ["","",""],
             ["","",""]
         ];  
     }
-
-    public function placeSymbol($symbol,$position){
-        $position = $_GET["cell-".$i."-".$x];
-        switch ($position) {
-            case "cell-0-0":
-                $this->board[0][0] = $symbol;
-                break;
-            case "cell-0-1":
-                $this->board[0][1] = $symbol;
-                break;
-            case "cell-0-2":
-                $this->board[0][2] = $symbol;
-                break;
-            case "cell-1-0":
-                $this->board[1][0] = $symbol;
-                break;
-            case "cell-1-1":
-                $this->board[1][1] = $symbol;
-                break;
-            case "cell-1-2":
-                $this->board[1][2] = $symbol;
-                break;
-            case "cell-2-0":
-                $this->board[2][0] = $symbol;
-                break;
-            case "cell-2-1":
-                $this->board[2][1] = $symbol;
-                break;
-            case "cell-2-2":
-                $this->board[2][2] = $symbol;
-                break;
-        }
+    /**
+     * @method returns Board object
+     */
+    public function getBoard(){
         return $this->board;
     }
-
-
-    public function getBoard(){
-        return $this->$board;
+    /**
+     * @param Board $newBoard contains Board object after a move has been made
+     * @method setBoard updates Board object
+     */
+    public function setBoard($newBoard){
+        $this->board = $newBoard;
     }
 }
 ?>

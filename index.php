@@ -3,8 +3,8 @@ SESSION_START();
 require_once("./Player.php");
 require_once("./Board.php");
 require_once("./TicTacToe.php");
-?>
-<!DOCTYPE html>
+
+$head = '<!DOCTYPE html>
 <head>
     <meta charset="utf-8">
     <title>Tic-Tac-Toe. This is the title. It is displayed in the titlebar of the window in most browsers.</title>
@@ -45,40 +45,30 @@ table.tic td {
     <section>
         <h1>Tic-Tac-Toe</h1>
         <article id="mainContent">
-            <h2>Your free browsergame!</h2>
-<!--            <p>Type in your names, the first player will get the X Symbol, the second one gets the O</p>';
-            <div class="form-group col-lg-1">
-                <form method="get" action="index.php">
-                    <div class="form-group col-lg-2">
-                        <label for="PlayerOne">PlayerOne</label>
-                        <input type="text" name="PlayerOne" class="form-control">
-                        <label for="PlayerTwo">PlayerTwo</label>
-                        <input type="text" name="PlayerTwo" class="form-control">
-                        <input type="button" class="btn btn-primary" name="playersubmit" value="playersubmit">
-                    </div>
-                </form>
-            </div>'; -->
-                <form method="get" action="index.php">
+            <h2>Your free browsergame!</h2>';
+$form = '       <form method="get" action="index.php">
                     <table class="tic">
                     <tr>
-                        <td><input type="submit" class="reset table" name="cell-0-0" value""></td>
-                        <td><input type="submit" class="reset table" name="cell-0-1" value""></td>
-                        <td><input type="submit" class="reset table" name="cell-0-2" value""></td>
+                        <td><input type="submit" class="reset table" name="cell-0-0" value"X"></td>
+                        <td><input type="submit" class="reset table" name="cell-0-1" value"X"></td>
+                        <td><input type="submit" class="reset table" name="cell-0-2" value"X"></td>
                     </tr>
                     <tr>
-                        <td><input type="submit" class="reset table" name="cell-1-0" value""></td>
-                        <td><input type="submit" class="reset table" name="cell-1-1" value""></td>
-                        <td><input type="submit" class="reset table" name="cell-1-2" value""></td>
+                        <td><input type="submit" class="reset table" name="cell-1-0" value"X"></td>
+                        <td><input type="submit" class="reset table" name="cell-1-1" value"X"></td>
+                        <td><input type="submit" class="reset table" name="cell-1-2" value"X"></td>
                     </tr>
                     <tr>
-                        <td><input type="submit" class="reset table" name="cell-2-0" value""></td>
-                        <td><input type="submit" class="reset table" name="cell-2-1" value""></td>
-                        <td><input type="submit" class="reset table" name="cell-2-2" value""></td>
+                        <td><input type="submit" class="reset table" name="cell-2-0" value"X"></td>
+                        <td><input type="submit" class="reset table" name="cell-2-1" value"X"></td>
+                        <td><input type="submit" class="reset table" name="cell-2-2" value"X"></td>
                     </tr>
-                    </table>';
-                </form>
-        </article>
+                    </table>
+                </form>';
+$footer ='  </article>
     </section>
 </body>
 </html>';
 
+echo $head.$form.$footer;
+?>
