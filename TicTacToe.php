@@ -16,9 +16,9 @@ class TicTacToe {
     public $board;
 
     /**
-     * @var object $currentPlayer marks the Player Class object who's turn is currently
+     * @var 
      */
-    public $currentPlayer;
+    private $table;
 
     /**
      * @param Player $playerOne 
@@ -29,6 +29,24 @@ class TicTacToe {
         $this->playerOne = $playerOne;
         $this->playerTwo = $playerTwo;
         $this->board = $board;
+    }
+    
+    public function makeMove(){ 
+
+        $table = '<table class="tic">';
+        //if(isset($_GET["cell-".$i."-".$x])){
+        
+            for ($i=0;$i<3;$i++){
+                $currentP = Z;
+                $table .= '<tr>';
+                for ($z=0;$z<3;$z++){
+                    $table .= '<td><input type="submit" class="reset field" name="cell-"'.$i.'"-"'.$z.'"value="'.$currentP.'"></td>';
+                }
+                $table .='</tr>';
+            }
+        //}
+        $table .= "</table>";
+        return $table;
     }
 }
 

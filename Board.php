@@ -48,24 +48,5 @@ class Board{
     public function getBoard(){
         return $this->$board;
     }
-
-    private $table;
-    
-    public function makeMove(){ 
-
-        if(isset($_GET["cell-".$i."-".$x])){
-            for ($i=0;$i<3;$i++){
-                $currentP = Z;
-                $table = "<tr>";
-                for ($z=0;$z<3;$z++){
-                    $table .= '<td><input type=\"submit\" class=\"reset field\" name=\"cell-\"$i\"-\"$z\"value=\"$currentP\"></td>';
-                }
-
-                $table .='</tr>';
-
-            }
-        }
-        return $table;
-    }
-
 }
+?>
