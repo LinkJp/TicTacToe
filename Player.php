@@ -23,7 +23,7 @@
          */
         public function getValues(){
             $object[name] = $this->name;
-            $object[symbol] = $this-> $symbol;
+            $object[symbol] = $this->symbol;
             return $object;
         }
     };

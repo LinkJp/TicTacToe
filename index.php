@@ -3,13 +3,26 @@ SESSION_START();
 require_once("./Player.php");
 require_once("./Board.php");
 require_once("./TicTacToe.php");
+$submitValue = $_GET["cell-'.$x.'-'.$y.'"];
 
-$head = '<!DOCTYPE html>
+$player1 = new Player("Jay", "X");
+$player2 = new Player("Dings", "O");
+$playerSymbols = [$player1->getValues()[symbol],$player2->getValues()[symbol]];
+$myBoard = new Board([
+    ["X","",""],
+    ["","O",""],
+    ["","",""]
+]);
+$myGame = new TicTacToe();
+if(isset($submitValue)){
+    $myGame->makeMove($myBoard, $submitValue);
+}
+$output = '<!DOCTYPE html>
 <head>
     <meta charset="utf-8">
     <title>Tic-Tac-Toe. This is the title. It is displayed in the titlebar of the window in most browsers.</title>
     <meta name="description" content="Tic-Tac-Toe-Game. Here is a short description for the page. This text is displayed e. g. in search engine result listings.">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    
     <style>
 table.tic td {
     border: 1px solid #333; /* grey cell borders */
@@ -45,30 +58,32 @@ table.tic td {
     <section>
         <h1>Tic-Tac-Toe</h1>
         <article id="mainContent">
-            <h2>Your free browsergame!</h2>';
-$form = '       <form method="get" action="index.php">
-                    <table class="tic">
-                    <tr>
-                        <td><input type="submit" class="reset table" name="cell-0-0" value"X"></td>
-                        <td><input type="submit" class="reset table" name="cell-0-1" value"X"></td>
-                        <td><input type="submit" class="reset table" name="cell-0-2" value"X"></td>
-                    </tr>
-                    <tr>
-                        <td><input type="submit" class="reset table" name="cell-1-0" value"X"></td>
-                        <td><input type="submit" class="reset table" name="cell-1-1" value"X"></td>
-                        <td><input type="submit" class="reset table" name="cell-1-2" value"X"></td>
-                    </tr>
-                    <tr>
-                        <td><input type="submit" class="reset table" name="cell-2-0" value"X"></td>
-                        <td><input type="submit" class="reset table" name="cell-2-1" value"X"></td>
-                        <td><input type="submit" class="reset table" name="cell-2-2" value"X"></td>
-                    </tr>
-                    </table>
-                </form>';
-$footer ='  </article>
+            <h2>Your free browsergame!</h2>
+                <form method="get" action="index.php">
+                    <table class="tic">';
+                        $value = $myBoard->getBoard();
+                        for($x = 0; $x < 3; $x++){
+                            $output .= '<tr>';
+                            $activePlayer = "X";
+                            for($y = 0; $y < 3; $y++){
+                                if(!empty($value[$x][$y])){
+                                    $output .= '<td><span class="color'.$activePlayer.'">'.$activePlayer.'</span></td>';
+                                }else{
+                                    $output .= '<td><input type="submit" class="reset field color'.$activePlayer.'" name="cell-'.$x.'-'.$y.'" value="'.$activePlayer.'" /></td>';
+                                }
+                                if(isset($activePlayer) && $activePlayer == "X"){
+                                    $activePlayer = "O";
+                                }elseif(isset($activePlayer) && $activePlayer == "O"){
+                                    $activePlayer = "X";
+                                }
+                            }
+                            $output .= '</tr>';
+                        }            
+$output .='          </table>
+                </form>
+          </article>
     </section>
 </body>
 </html>';
-
-echo $head.$form.$footer;
+echo $output;
 ?>

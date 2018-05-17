@@ -31,21 +31,22 @@ class TicTacToe {
     public function makeMove($board, $submitValue){ 
         for($x=0; $x < 3;$x++){
             for($y=0; $y < 3;$y++){
-                $newBoard = $board->getboard();
-                if(!empty($submitValue["cell-$x-$y"])){
-                    $activePlayer = $submitValue["cell-$x-$y"];
-                    $newBoard[$x][$y] = $activePlayer;
+                $newBoard = $board->getboard();            
+                $activePlayer = "X"; 
+                if(isset($submitValue["cell-$x-$y"])){
+                    $position = $submitValue["cell-$x-$y"];
+                    $newBoard[$x][$y] = $position;
                 }
                 $board->setBoard($newBoard);
+                return $board->getBoard();
             }
         }
-        
-        if(isset($activePlayer) && $activePlayer == $player1[symbol]){
-            $activePlayer = $player2[symbol];
-        }elseif(isset($activePlayer) && $activePlayer == $player2[symbol]){
-            $activePlayer = $player1[symbol];
+        if(isset($activePlayer) && $activePlayer == "X"){
+            $activePlayer = "O";
+        }elseif(isset($activePlayer) && $activePlayer == "O"){
+            $activePlayer = "X";
         }
-        return($activePlayer);
+        return ($activePlayer);
     }
 }
     /**
