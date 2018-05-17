@@ -5,18 +5,14 @@ class Board{
     /**
      * @var Board $board creates multidimensional array with strings as values
      */
-    private $board;
+    public $board;
 
     /**
      * @param Board contains $board 
      * @method constructs new Board object
      */
     public function __construct($board){
-        $this->board = [
-            ["","",""],
-            ["","",""],
-            ["","",""]
-        ];  
+        $this->board = $board;
     }
     /**
      * @method returns Board object
