@@ -15,44 +15,45 @@ class TicTacToe {
      */
     public $board;
 
-    /**
-     * @var 
-     */
-    private $table;
 
     /**
      * @param Player $playerOne 
      * @param Player $playerTwo
      * @param Board $board
      */
+    /*
     public function __construct ($playerOne, $playerTwo, $board){
         $this->playerOne = $playerOne;
         $this->playerTwo = $playerTwo;
         $this->board = $board;
     }
-    
-    public function makeMove(){ 
-
-        $table = '<table class="tic">';
-        //if(isset($_GET["cell-".$i."-".$x])){
-        
-            for ($i=0;$i<3;$i++){
-                $currentP = Z;
-                $table .= '<tr>';
-                for ($z=0;$z<3;$z++){
-                    $table .= '<td><input type="submit" class="reset field" name="cell-"'.$i.'"-"'.$z.'"value="'.$currentP.'"></td>';
+    */
+    public function makeMove($board, $submitValue){ 
+        for($x=0; $x < 3;$x++){
+            for($y=0; $y < 3;$y++){
+                $newBoard = $board->getboard();
+                if(!empty($submitValue["cell-$x-$y"])){
+                    $activePlayer = $submitValue["cell-$x-$y"];
+                    $newBoard[$x][$y] = $activePlayer;
                 }
-                $table .='</tr>';
+                $board->setBoard($newBoard);
             }
-        //}
-        $table .= "</table>";
-        return $table;
+        }
+        
+        if(isset($activePlayer) && $activePlayer == $player1[symbol]){
+            $activePlayer = $player2[symbol];
+        }elseif(isset($activePlayer) && $activePlayer == $player2[symbol]){
+            $activePlayer = $player1[symbol];
+        }
+        return($activePlayer);
     }
+}
     /**
      * @param string $symbol contains the Symbol of the Player
      * @param array $position marks the position where the symbol has to be set
      * @method placeSymbol places the symbol in the correct position
      */
+    /*
     public function placeSymbol($symbol,$position){
         $position = $_GET["cell-".$i."-".$x];
         switch ($position) {
@@ -88,7 +89,6 @@ class TicTacToe {
     }
 
 }
-
-
+*/
 
 ?>
