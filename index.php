@@ -1,23 +1,24 @@
 <?php
 SESSION_START();
-require_once("./Player.php");
-require_once("./Board.php");
-require_once("./TicTacToe.php");
-$submitValue = $_GET["cell-'.$x.'-'.$y.'"];
 
-$player1 = new Player("Jay", "X");
-$player2 = new Player("Dings", "O");
-$playerSymbols = [$player1->getValues()[symbol],$player2->getValues()[symbol]];
-$myBoard = new Board([
-    ["X","",""],
-    ["","O",""],
-    ["","",""]
-]);
-$myGame = new TicTacToe();
-if(isset($submitValue)){
-    $myGame->makeMove($myBoard, $submitValue);
+define ('BASEPATH', realpath(dirname(__FILE__)));
+require_once(BASEPATH.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'autoload.php');
+
+if(empty($_SESSION['myGame'])){
+    $player1 = new Player("Jay", "X");
+    $player2 = new Player("Dings", "O");
+    $myBoard = new Board();
+    $myGame = new TicTacToe($player1, $player2, $myBoard);
+
+}else{
+    $myGame = unserialize($_SESSION['myGame']);
 }
-$output = '<!DOCTYPE html>
+
+if(isset($_GET)){
+    $myGame->doMove();
+    $_SESSION['myGame'] = serialize($myGame);
+}
+$template = '<!DOCTYPE html>
 <head>
     <meta charset="utf-8">
     <title>Tic-Tac-Toe. This is the title. It is displayed in the titlebar of the window in most browsers.</title>
@@ -59,31 +60,13 @@ table.tic td {
         <h1>Tic-Tac-Toe</h1>
         <article id="mainContent">
             <h2>Your free browsergame!</h2>
-                <form method="get" action="index.php">
-                    <table class="tic">';
-                        $value = $myBoard->getBoard();
-                        for($x = 0; $x < 3; $x++){
-                            $output .= '<tr>';
-                            $activePlayer = "X";
-                            for($y = 0; $y < 3; $y++){
-                                if(!empty($value[$x][$y])){
-                                    $output .= '<td><span class="color'.$activePlayer.'">'.$activePlayer.'</span></td>';
-                                }else{
-                                    $output .= '<td><input type="submit" class="reset field color'.$activePlayer.'" name="cell-'.$x.'-'.$y.'" value="'.$activePlayer.'" /></td>';
-                                }
-                                if(isset($activePlayer) && $activePlayer == "X"){
-                                    $activePlayer = "O";
-                                }elseif(isset($activePlayer) && $activePlayer == "O"){
-                                    $activePlayer = "X";
-                                }
-                            }
-                            $output .= '</tr>';
-                        }            
-$output .='          </table>
-                </form>
-          </article>
+                <form method="get" action="index.php">';      
+$template .= $myGame->createBoard();                           
+$template .='   </form>
+        </article>
     </section>
 </body>
 </html>';
-echo $output;
+echo $template;
+
 ?>
