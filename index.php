@@ -15,7 +15,7 @@ if(empty($_SESSION['myGame'])){
 }
 
 if(isset($_GET)){
-    $myGame->doMove();
+    $myGame->createBoard();
     $_SESSION['myGame'] = serialize($myGame);
 }
 $template = '<!DOCTYPE html>
