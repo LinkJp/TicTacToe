@@ -84,6 +84,7 @@ class TicTacToe {
     public function createBoard(){
         $board = $this->board->getBoard();
         $symbol = $this->getCurrentSymbol();
+        $win = $this->checkWin();
         $output .= '<table class="tic">';
         for($x = 0; $x < 3; $x++){
             $output .= '<tr>';                            
@@ -107,85 +108,40 @@ class TicTacToe {
         if (!empty($board[0][0]) && $board[0][0] === $board[0][1] && $board[0][1] === $board[0][2] ) {
             session_destroy();  
             return ($board[0][0]. ' hat Gewonnen'); 
-        } else  //wagerecht 1 reihe
+        } else  
         if (!empty($board[1][0]) && $board[1][0] === $board[1][1] && $board[1][1] === $board[1][2] ) {
             session_destroy();  
-            return ($board[1][0]. ' hat Gewonnen'); } else //wagerecht 2 reihe
+            return ($board[1][0]. ' hat Gewonnen'); 
+        } else 
         if (!empty($board[2][0]) && $board[2][0] === $board[2][1] && $board[2][1] === $board[2][2] ) {
             session_destroy();  
             return ($board[2][0]. ' hat Gewonnen'); 
-        } else //wagerecht 3 reihe
+        } else
         if (!empty($board[0][0]) && $board[0][0] === $board[1][0] && $board[1][0] === $board[2][0] ) {
             session_destroy();  
             return ($board[0][0]. ' hat Gewonnen'); } 
-            else //senkrecht 1 reihe
+            else 
         if (!empty($board[0][1]) && $board[0][1] === $board[1][1] && $board[1][1] === $board[2][1] ) {
             session_destroy();  
             return ($board[0][1]. ' hat Gewonnen'); } 
-            else //senkrecht 2 reihe
+            else 
         if (!empty($board[0][2]) && $board[0][2] === $board[1][2] && $board[1][2] === $board[2][2] ) {
             session_destroy();  
             return ($board[0][2]. ' hat Gewonnen'); } 
-            else //senkrecht 3 reihe
+            else 
         if (!empty($board[0][0]) && $board[0][0] === $board[1][1] && $board[1][1] === $board[2][2] ) {
             session_destroy();  
             return ($board[0][0]. ' hat Gewonnen'); } 
-            else //diagonal 1
+            else 
         if (!empty($board[0][2]) && $board[0][2] === $board[1][1] && $board[1][1] === $board[2][0] ) {
             session_destroy();  
             return ($board[0][2]. ' hat Gewonnen'); } 
-            else //diagonal 2
+            else 
         if (!empty($board[0][0]) && !empty($board[0][1]) && !empty($board[0][2]) && !empty($board[1][0]) && !empty($board[1][1]) && !empty($board[1][2]) && !empty($board[2][0]) && !empty($board[2][1]) && !empty($board[2][2])) {
             session_destroy(); 
             return('Keiner hat Gewonnen');
-        }//wenn keiner gewonnen hat
         }
-     
-
-    
+    }    
 }
-
-    /**
-     * @param string $symbol contains the Symbol of the Player
-     * @param array $position marks the position where the symbol has to be set
-     * @method placeSymbol places the symbol in the correct position
-     */
-    /*
-    public function placeSymbol($symbol,$position){
-        $position = $_GET["cell-".$i."-".$x];
-        switch ($position) {
-            case "cell-0-0":
-                $this->board[0][0] = $symbol;
-                break;
-            case "cell-0-1":
-                $this->board[0][1] = $symbol;
-                break;
-            case "cell-0-2":
-                $this->board[0][2] = $symbol;
-                break;
-            case "cell-1-0":
-                $this->board[1][0] = $symbol;
-                break;
-            case "cell-1-1":
-                $this->board[1][1] = $symbol;
-                break;
-            case "cell-1-2":
-                $this->board[1][2] = $symbol;
-                break;
-            case "cell-2-0":
-                $this->board[2][0] = $symbol;
-                break;
-            case "cell-2-1":
-                $this->board[2][1] = $symbol;
-                break;
-            case "cell-2-2":
-                $this->board[2][2] = $symbol;
-                break;
-        }
-        return $this->board;
-    }
-
-}
-*/
 
 ?>
