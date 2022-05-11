@@ -27,8 +27,8 @@
          * @return array $symbol and $name
          */
         public function getValues(){
-            $object[name] = $this->name;
-            $object[symbol] = $this->symbol;
+            $object["name"] = $this->name;
+            $object["symbol"] = $this->symbol;
             return $object;
         }
     };

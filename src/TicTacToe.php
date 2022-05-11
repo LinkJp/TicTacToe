@@ -74,7 +74,7 @@ class TicTacToe {
      * @return string
      */
     public function getCurrentSymbol(){
-        return $this->currentPlayer->getValues()[symbol];
+        return $this->currentPlayer->getValues()["symbol"];
     }
 
     /**
@@ -85,7 +85,7 @@ class TicTacToe {
         $board = $this->board->getBoard();
         $symbol = $this->getCurrentSymbol();
         $win = $this->checkWin();
-        $output .= '<table class="tic">';
+        $output = '<table class="tic">';
         for($x = 0; $x < 3; $x++){
             $output .= '<tr>';                            
             for($y = 0; $y < 3; $y++){
